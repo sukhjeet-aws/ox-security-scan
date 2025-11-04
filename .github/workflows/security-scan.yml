@@ -1,0 +1,20 @@
+ 
+name: OX Security Scan
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main
+
+jobs:
+  security:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - name: Run OX Security Scan
+        uses: oxsecurity/ox-security-scan@main
+        with:
+          ox_api_key: ${{ secrets.OX_API_KEY }}
